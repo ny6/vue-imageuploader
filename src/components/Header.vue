@@ -1,11 +1,22 @@
 <template>
   <div class="ui secondary pointing menu">
-    <a
+    <router-link
       class="item active"
-      href="/"
-    >Image Storage</a>
+      to="/"
+    >Image Storage</router-link>
     <div class="right menu">
-      <div v-if="isLoggedIn">
+      <div
+        v-if="isLoggedIn"
+        class="horizontal"
+      >
+        <router-link
+          to="/"
+          class="ui item"
+        >Gallary</router-link>
+        <router-link
+          to="/upload"
+          class="ui item"
+        >Upload</router-link>
         <a
           href="#"
           class="ui item"
@@ -32,3 +43,10 @@ export default {
   methods: mapActions(['login', 'logout']),
 };
 </script>
+
+<style scoped>
+  .horizontal {
+    display: flex;
+    flex-direction: row;
+  }
+</style>
