@@ -1,3 +1,4 @@
+import axios from 'axios';
 import qs from 'qs';
 
 const { VUE_APP_CLIENT_ID: clientId } = process.env;
@@ -10,5 +11,10 @@ export default {
       response_type: 'token',
     };
     window.location = `${apiUrl}/oauth2/authorize?${qs.stringify(queryString)}`;
+  },
+  fetchImages(token) {
+    return axios.get(`${apiUrl}/3/account/me/images`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
   },
 };
